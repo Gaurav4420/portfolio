@@ -4,306 +4,288 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gaurav Borikar - Senior Product Manager</title>
-  <meta name="description" content="Gaurav Borikar - Senior Product Manager shipping growth across B2B SaaS, marketplaces, e-commerce and quick commerce. Acquisition, onboarding, activation, retention - powered by GenAI and Agentic AI." />
+  <meta name="description" content="Gaurav Borikar - Senior Product Manager across B2B SaaS, marketplaces, e-commerce & quick commerce. Growth, retention, GenAI & Agentic AI." />
   <meta property="og:title" content="Gaurav Borikar - Senior Product Manager" />
   <meta property="og:description" content="Product leader across SaaS, marketplaces & commerce. Growth, retention, GenAI & Agentic AI." />
-  <meta property="og:type" content="website" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: {
-      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] },
-      colors: { ink:'#141414', netflix:'#E50914', netdark:'#B20710' }
-    } } }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
+    :root{ --red:#E50914; --bg:#141414; }
+    *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-    body{ background:#ffffff; color:#141414; -webkit-font-smoothing:antialiased; }
-    ::selection{ background:rgba(229,9,20,.18); }
-    :focus-visible{ outline:2px solid #E50914; outline-offset:3px; border-radius:6px; }
-    h1,h2,h3{ letter-spacing:-0.02em; }
+    body{ background:var(--bg); color:#fff; font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    ::selection{ background:rgba(229,9,20,.35); }
+    :focus-visible{ outline:2px solid #fff; outline-offset:3px; border-radius:4px; }
+    .bebas{ font-family:'Bebas Neue',sans-serif; letter-spacing:.02em; }
 
-    /* ===== Netflix-style uniform card ===== */
-    .row{ display:flex; gap:.6rem; overflow-x:auto; padding:2.5rem .25rem 2rem; scroll-snap-type:x mandatory; }
-    .row::-webkit-scrollbar{ height:6px; }
-    .row::-webkit-scrollbar-thumb{ background:#e0e0e0; border-radius:99px; }
-    .ncard{ position:relative; flex:0 0 auto; width:19rem; height:11rem; border-radius:6px; overflow:hidden;
-      background:#141414; scroll-snap-align:start; cursor:default;
-      transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
-    .ncard:hover{ transform:scale(1.09); box-shadow:0 24px 48px rgba(0,0,0,.45); z-index:5; }
-    .ncard .art{ position:absolute; inset:0; padding:1rem 1.1rem; display:flex; flex-direction:column; justify-content:space-between;
-      background:radial-gradient(130% 130% at 100% 0%, #2b2b2b 0%, #141414 60%); }
-    .ncard .tag{ align-self:flex-start; font-size:.62rem; letter-spacing:.12em; font-weight:700; color:#fff;
-      background:rgba(255,255,255,.14); padding:.25rem .55rem; border-radius:99px; }
-    .ncard .ttl{ color:#fff; font-weight:800; font-size:1.15rem; line-height:1.15; }
-    .ncard .company{ color:#b3b3b3; font-size:.72rem; margin-top:.15rem; }
-    .ncard .redbar{ position:absolute; left:0; bottom:0; height:3px; width:100%; background:#E50914; opacity:.9; }
-    .ncard .impact{ position:absolute; inset:auto 0 0 0; padding:.9rem 1.1rem 1rem;
-      background:linear-gradient(to top, rgba(0,0,0,.96) 55%, transparent);
-      transform:translateY(101%); transition:transform .32s ease; }
-    .ncard:hover .impact{ transform:translateY(0); }
-    .ncard .impact .metric{ color:#fff; font-weight:800; font-size:.9rem; }
-    .ncard .impact .desc{ color:#c9c9c9; font-size:.76rem; margin-top:.3rem; line-height:1.35; }
+    /* NAV */
+    #nav{ transition:background-color .4s ease; }
+    #nav.solid{ background:#141414; }
 
-    .lift{ transition:transform .25s ease, box-shadow .25s ease; }
-    .lift:hover{ transform:translateY(-4px); box-shadow:0 16px 40px -22px rgba(0,0,0,.25); }
-    .reveal{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+    /* HERO billboard */
+    .hero{ position:relative; min-height:88vh; display:flex; align-items:center;
+      background:
+        radial-gradient(120% 120% at 75% 25%, rgba(120,20,24,.55), transparent 55%),
+        radial-gradient(90% 90% at 15% 20%, rgba(40,40,60,.6), transparent 60%),
+        linear-gradient(0deg,#141414 0%, #1c1c22 55%, #201014 100%); }
+    .hero::after{ content:""; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(to top, #141414 6%, transparent 45%), linear-gradient(to right, rgba(0,0,0,.75), transparent 55%); }
+    .hero-inner{ position:relative; z-index:2; }
+
+    /* ROWS */
+    .rowwrap{ position:relative; }
+    .row{ display:flex; gap:.5rem; overflow-x:auto; scroll-behavior:smooth; padding:.5rem 0 1rem; scroll-snap-type:x proximity; }
+    .row::-webkit-scrollbar{ display:none; } .row{ scrollbar-width:none; }
+    .arrowbtn{ position:absolute; top:0; bottom:1.5rem; width:3rem; z-index:6; border:none; cursor:pointer;
+      background:rgba(0,0,0,.55); color:#fff; font-size:1.6rem; opacity:0; transition:opacity .25s; }
+    .rowwrap:hover .arrowbtn{ opacity:1; }
+    .arrowbtn.l{ left:0; border-radius:0 4px 4px 0; } .arrowbtn.r{ right:0; border-radius:4px 0 0 4px; }
+
+    /* uniform Netflix card */
+    .card{ position:relative; flex:0 0 auto; width:17rem; height:9.6rem; border-radius:5px; overflow:hidden;
+      background:#2b2b2b; scroll-snap-align:start; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+    .card:hover{ transform:scale(1.12); box-shadow:0 20px 45px rgba(0,0,0,.6); z-index:8; }
+    .card .art{ position:absolute; inset:0; padding:.95rem 1rem; display:flex; flex-direction:column; justify-content:space-between;
+      background:linear-gradient(135deg,#3a3a42 0%, #1d1d22 70%); }
+    .card .tag{ align-self:flex-start; font-size:.58rem; letter-spacing:.14em; font-weight:800; color:#fff; opacity:.75; }
+    .card .ttl{ font-weight:800; font-size:1.05rem; line-height:1.12; }
+    .card .co{ color:#bdbdbd; font-size:.7rem; margin-top:.15rem; }
+    .card .bar{ position:absolute; left:0; bottom:0; height:3px; width:100%; background:var(--red); }
+    .card .info{ position:absolute; inset:auto 0 0 0; padding:.8rem 1rem .95rem;
+      background:linear-gradient(to top, rgba(0,0,0,.97) 60%, transparent); transform:translateY(101%); transition:transform .3s ease; }
+    .card:hover .info{ transform:translateY(0); }
+    .card .metric{ font-weight:800; font-size:.85rem; } .card .desc{ color:#c9c9c9; font-size:.73rem; margin-top:.25rem; line-height:1.35; }
+
+    /* Top-picks ranked cards */
+    .rank{ position:relative; flex:0 0 auto; display:flex; align-items:flex-end; padding-left:.25rem; scroll-snap-align:start; }
+    .rank .num{ font-family:'Bebas Neue'; font-size:9.5rem; line-height:.72; color:#141414;
+      -webkit-text-stroke:3px #4d4d4d; margin-right:-1.2rem; user-select:none; }
+    .rank .card{ width:13.5rem; height:9.6rem; }
+
+    .lift{ transition:transform .25s ease, box-shadow .25s; }
+    .lift:hover{ transform:translateY(-4px); box-shadow:0 14px 34px rgba(0,0,0,.5); }
+    .reveal{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
     .reveal.in{ opacity:1; transform:none; }
-    .track{ display:flex; gap:2rem; width:max-content; animation:scroll 30s linear infinite; }
-    @keyframes scroll{ to{ transform:translateX(-50%); } }
-    .track:hover{ animation-play-state:paused; }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal{ opacity:1; transform:none; } html{ scroll-behavior:auto; }
-      .ncard,.lift,.track{ transition:none; animation:none; }
+      .reveal{ opacity:1; transform:none; } html{ scroll-behavior:auto; } .card,.lift{ transition:none; }
     }
   </style>
 </head>
-<body class="font-sans">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-netflix focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+<body>
+  <a href="#work" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
   <!-- NAV -->
-  <header id="nav" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 bg-white/80 backdrop-blur border-b border-black/5">
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Primary">
-      <a href="#top" class="text-xl font-black tracking-tight">GAURAV<span class="text-netflix">.</span></a>
-      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600">
-        <li><a class="hover:text-netflix transition" href="#about">About</a></li>
-        <li><a class="hover:text-netflix transition" href="#work">Work</a></li>
-        <li><a class="hover:text-netflix transition" href="#skills">Skills</a></li>
-        <li><a class="hover:text-netflix transition" href="#experience">Experience</a></li>
-        <li><a class="hover:text-netflix transition" href="#contact">Contact</a></li>
-      </ul>
-      <a href="Gaurav-Borikar-Resume.pdf" target="_blank" rel="noopener" class="text-sm font-semibold px-4 py-2 rounded bg-netflix text-white hover:bg-netdark transition">Resume</a>
+  <header id="nav" class="fixed top-0 inset-x-0 z-40 bg-gradient-to-b from-black/80 to-transparent">
+    <nav class="max-w-[1400px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between" aria-label="Primary">
+      <div class="flex items-center gap-8">
+        <a href="#top" class="bebas text-3xl text-[color:var(--red)] leading-none tracking-wide">GAURAV</a>
+        <ul class="hidden md:flex items-center gap-5 text-sm text-neutral-200">
+          <li><a class="hover:text-neutral-400 transition" href="#top">Home</a></li>
+          <li><a class="hover:text-neutral-400 transition" href="#work">Work</a></li>
+          <li><a class="hover:text-neutral-400 transition" href="#about">About</a></li>
+          <li><a class="hover:text-neutral-400 transition" href="#skills">Skills</a></li>
+          <li><a class="hover:text-neutral-400 transition" href="#experience">Experience</a></li>
+        </ul>
+      </div>
+      <a href="Gaurav-Borikar-Resume.pdf" target="_blank" rel="noopener" class="text-sm font-semibold px-4 py-1.5 rounded bg-[color:var(--red)] hover:bg-[#c11119] transition">Resume</a>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section id="top" class="relative overflow-hidden">
-      <div class="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-netflix/5 blur-3xl" aria-hidden="true"></div>
-      <div class="max-w-6xl mx-auto px-6 pt-36 pb-16">
-        <p class="inline-flex items-center gap-2 text-xs font-semibold text-netflix bg-netflix/10 px-3 py-1.5 rounded-full mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-netflix"></span> SENIOR PRODUCT MANAGER
-        </p>
-        <h1 class="text-5xl sm:text-7xl lg:text-[5.25rem] font-black leading-[0.95]">
-          I turn ambiguity into<br class="hidden sm:block" /> <span class="text-netflix">products that grow.</span>
-        </h1>
-        <p class="mt-7 max-w-2xl text-lg sm:text-xl text-neutral-600 leading-relaxed">
-          Senior Product Manager, ~9 years shipping growth across <strong>B2B SaaS, marketplaces, e-commerce and quick commerce</strong>.
-          I own acquisition, onboarding, activation and retention - and I build with <strong>GenAI and Agentic AI</strong>.
-        </p>
-        <div class="mt-9 flex flex-wrap gap-3">
-          <a href="#work" class="px-7 py-3.5 rounded font-semibold bg-netflix text-white hover:bg-netdark transition">View my work</a>
-          <a href="#contact" class="px-7 py-3.5 rounded font-semibold border-2 border-neutral-200 hover:border-neutral-400 transition">Get in touch</a>
-        </div>
-        <dl class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl">
-          <div><dt class="text-4xl font-black" data-count="9" data-suffix="+">0</dt><dd class="text-sm text-neutral-500 mt-1">Years experience</dd></div>
-          <div><dt class="text-4xl font-black" data-count="15" data-prefix="$" data-suffix="M+">0</dt><dd class="text-sm text-neutral-500 mt-1">Incremental GMV</dd></div>
-          <div><dt class="text-4xl font-black" data-count="300" data-suffix="%">0</dt><dd class="text-sm text-neutral-500 mt-1">Organic traffic growth</dd></div>
-          <div><dt class="text-4xl font-black" data-count="85" data-suffix="%">0</dt><dd class="text-sm text-neutral-500 mt-1">Churn-prediction accuracy</dd></div>
-        </dl>
-      </div>
-
-      <!-- Domains marquee -->
-      <div class="border-y border-black/5 py-4 overflow-hidden bg-neutral-50">
-        <div class="track text-neutral-400 font-semibold text-sm uppercase tracking-[0.2em]">
-          <span>B2B SaaS</span><span class="text-netflix">·</span><span>Marketplaces</span><span class="text-netflix">·</span><span>E-commerce</span><span class="text-netflix">·</span><span>Quick Commerce</span><span class="text-netflix">·</span><span>Subscription</span><span class="text-netflix">·</span><span>GenAI</span><span class="text-netflix">·</span><span>Agentic AI</span><span class="text-netflix">·</span><span>Fintech</span><span class="text-netflix">·</span>
-          <span>B2B SaaS</span><span class="text-netflix">·</span><span>Marketplaces</span><span class="text-netflix">·</span><span>E-commerce</span><span class="text-netflix">·</span><span>Quick Commerce</span><span class="text-netflix">·</span><span>Subscription</span><span class="text-netflix">·</span><span>GenAI</span><span class="text-netflix">·</span><span>Agentic AI</span><span class="text-netflix">·</span><span>Fintech</span><span class="text-netflix">·</span>
+  <main id="top">
+    <!-- HERO BILLBOARD -->
+    <section class="hero px-6 lg:px-12">
+      <div class="hero-inner max-w-[1400px] mx-auto w-full">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold tracking-[0.3em] text-neutral-300 mb-3">
+            <span class="text-[color:var(--red)] font-black">S</span> &nbsp;SENIOR PRODUCT MANAGER
+          </p>
+          <h1 class="bebas text-6xl sm:text-8xl lg:text-9xl leading-[0.85]">GAURAV BORIKAR</h1>
+          <div class="flex items-center gap-3 mt-5 text-sm">
+            <span class="text-green-400 font-bold">98% Match</span>
+            <span class="text-neutral-300">2026</span>
+            <span class="border border-neutral-500 text-neutral-300 px-1.5 text-xs rounded-sm">PM</span>
+            <span class="text-neutral-300">~9 Seasons</span>
+            <span class="border border-neutral-500 text-neutral-400 px-1.5 text-[10px] rounded-sm">HD</span>
+          </div>
+          <p class="mt-5 text-lg text-neutral-200 leading-relaxed max-w-xl">
+            A product leader who turns ambiguity into products that grow - across <strong>B2B SaaS, marketplaces,
+            e-commerce and quick commerce</strong>. Owns acquisition, onboarding, activation and retention, and builds
+            with <strong>GenAI &amp; Agentic AI</strong>.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#work" class="inline-flex items-center gap-2 bg-white text-black font-bold px-7 py-3 rounded hover:bg-white/85 transition">
+              <span class="text-xl">&#9654;</span> View Work
+            </a>
+            <a href="#about" class="inline-flex items-center gap-2 bg-[rgba(109,109,110,.65)] text-white font-semibold px-7 py-3 rounded hover:bg-[rgba(109,109,110,.5)] transition">
+              <span class="text-xl">&#9432;</span> More Info
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
+    <!-- ROWS -->
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 -mt-10 relative z-10 pb-8">
+
+      <!-- Featured Work -->
+      <section id="work" class="mb-10">
+        <h2 class="text-xl sm:text-2xl font-bold mb-1">Featured Work</h2>
+        <div class="rowwrap">
+          <button class="arrowbtn l" data-dir="-1" aria-label="Scroll left">&#8249;</button>
+          <div class="row" id="row-work">
+            <article class="card"><div class="art"><span class="tag">AGENTIC AI</span><div><h3 class="ttl">Agentic Onboarding Co-pilot</h3><p class="co">Walmart Global Tech</p></div><span class="bar"></span></div><div class="info"><p class="metric">Automates verification, catalog &amp; compliance</p><p class="desc">Agentic AI co-pilot guiding sellers through onboarding &amp; activation - big cut in manual effort; -15% fraud via ML.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">GROWTH · PERSONALIZATION</span><div><h3 class="ttl">Activation &amp; Personalization Engine</h3><p class="co">Walmart Global Tech</p></div><span class="bar"></span></div><div class="info"><p class="metric">+10% activation · 4 markets</p><p class="desc">Identified high-potential accounts; served tailored assortment, pricing &amp; promo recommendations.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">CONVERSION</span><div><h3 class="ttl">Onboarding &amp; Funnel Redesign</h3><p class="co">Walmart Global Tech</p></div><span class="bar"></span></div><div class="info"><p class="metric">+10% completion · $15M+ GMV</p><p class="desc">A/B-tested messaging, flow &amp; offers; rolled out winners to lift completion and cut drop-off.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">B2B SAAS · RETENTION</span><div><h3 class="ttl">Customer Health &amp; Churn Prediction</h3><p class="co">Whatfix</p></div><span class="bar"></span></div><div class="info"><p class="metric">~85% accuracy · -10% churn</p><p class="desc">Churn-prediction driving proactive lifecycle interventions; INR 2Cr+ saved via automation.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">SUBSCRIPTION</span><div><h3 class="ttl">Enterprise Admin &amp; Expansion</h3><p class="co">Whatfix</p></div><span class="bar"></span></div><div class="info"><p class="metric">-40% admin time · +20% adoption</p><p class="desc">License platform powering upsell &amp; cross-sell; grew expansion using usage insights.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">GROWTH · WEB</span><div><h3 class="ttl">Website Funnel &amp; Pipeline</h3><p class="co">Whatfix</p></div><span class="bar"></span></div><div class="info"><p class="metric">$7M pipeline · $1.5M revenue</p><p class="desc">Scaled the company website; optimized conversion end-to-end with marketing &amp; design.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">E-COMMERCE · PRICING</span><div><h3 class="ttl">Price Intelligence &amp; Analytics</h3><p class="co">IndiaMART</p></div><span class="bar"></span></div><div class="info"><p class="metric">5M+ sellers · 100M+ buyers</p><p class="desc">Standardized pricing, detected anomalies, recommended competitive ranges; surfaced price trends.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">E-COMMERCE · CATALOG</span><div><h3 class="ttl">WhatsApp Catalog Enrichment</h3><p class="co">IndiaMART</p></div><span class="bar"></span></div><div class="info"><p class="metric">-80% listing time · 100K+/mo</p><p class="desc">WhatsApp listing flow + ML support bot (94% accuracy) made catalog creation effortless.</p></div></article>
+            <article class="card"><div class="art"><span class="tag">GROWTH · SEO</span><div><h3 class="ttl">Product Discovery &amp; SEO</h3><p class="co">IndiaMART</p></div><span class="bar"></span></div><div class="info"><p class="metric">+300% organic traffic</p><p class="desc">Optimized discovery &amp; SEO across a massive catalog to unlock organic demand in 15 months.</p></div></article>
+          </div>
+          <button class="arrowbtn r" data-dir="1" aria-label="Scroll right">&#8250;</button>
+        </div>
+      </section>
+
+      <!-- Top Picks (ranked) -->
+      <section class="mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-1">Top Picks for Hiring Managers</h2>
+        <div class="rowwrap">
+          <button class="arrowbtn l" data-dir="-1" aria-label="Scroll left">&#8249;</button>
+          <div class="row" id="row-top">
+            <div class="rank"><span class="num">1</span><article class="card"><div class="art"><span class="tag">IMPACT</span><div><h3 class="ttl">$15M+ GMV</h3><p class="co">Onboarding redesign · 10 months</p></div><span class="bar"></span></div></article></div>
+            <div class="rank"><span class="num">2</span><article class="card"><div class="art"><span class="tag">IMPACT</span><div><h3 class="ttl">+10% Activation</h3><p class="co">Personalization · 4 markets</p></div><span class="bar"></span></div></article></div>
+            <div class="rank"><span class="num">3</span><article class="card"><div class="art"><span class="tag">IMPACT</span><div><h3 class="ttl">-10% Churn</h3><p class="co">85% churn-prediction accuracy</p></div><span class="bar"></span></div></article></div>
+            <div class="rank"><span class="num">4</span><article class="card"><div class="art"><span class="tag">IMPACT</span><div><h3 class="ttl">+300% Traffic</h3><p class="co">Discovery &amp; SEO · 15 months</p></div><span class="bar"></span></div></article></div>
+            <div class="rank"><span class="num">5</span><article class="card"><div class="art"><span class="tag">IMPACT</span><div><h3 class="ttl">-80% Listing Time</h3><p class="co">WhatsApp catalog · 100K+/mo</p></div><span class="bar"></span></div></article></div>
+          </div>
+          <button class="arrowbtn r" data-dir="1" aria-label="Scroll right">&#8250;</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ABOUT (Netflix "title detail" style) -->
+    <section id="about" class="max-w-[1400px] mx-auto px-6 lg:px-12 py-14 grid md:grid-cols-3 gap-10 border-t border-white/10">
       <div class="md:col-span-2 reveal">
-        <p class="text-sm font-bold text-netflix uppercase tracking-wider mb-3">About</p>
-        <h2 class="text-3xl font-extrabold mb-5">A generalist PM who ships outcomes, not features.</h2>
-        <p class="text-neutral-600 text-lg leading-relaxed">
-          Over ~9 years - 7+ in product, ~2 as an engineer - I've built growth, subscription, marketplace and commerce
-          products across B2C and B2B. I like ambiguous problems: lifting sign-up and activation, growing subscriptions
-          through personalization and targeted offers, reducing churn with lifecycle interventions, and increasingly
-          designing <strong>Agentic AI</strong> workflows that do real work for users. I'm equally comfortable with
-          subscription economics (ARR/GRR/churn), funnel experimentation, and partnering deeply with data science and
-          engineering. I lead with data and a bias for measurable impact - whatever the domain.
+        <h2 class="text-2xl font-extrabold mb-4">About this title</h2>
+        <p class="text-neutral-300 text-lg leading-relaxed">
+          Over ~9 years - 7+ in product, ~2 as an engineer - Gaurav has built growth, subscription, marketplace and
+          commerce products across B2C and B2B. He thrives on ambiguous problems: lifting sign-up and activation,
+          growing subscriptions through personalization and targeted offers, reducing churn with lifecycle
+          interventions, and designing <strong>Agentic AI</strong> workflows that do real work for users. Comfortable
+          with subscription economics (ARR/GRR/churn), funnel experimentation, and deep partnership with data science
+          and engineering - domain-agnostic, always outcome-driven.
         </p>
       </div>
-      <div class="reveal space-y-4">
-        <div class="bg-neutral-50 rounded-xl p-6 border border-black/5 lift">
-          <p class="text-4xl font-black text-netflix">+10%</p>
-          <p class="text-neutral-600 mt-1 text-sm">activation &amp; sign-up completion uplift</p>
-        </div>
-        <div class="bg-neutral-50 rounded-xl p-6 border border-black/5 lift">
-          <p class="text-4xl font-black text-netflix">85%</p>
-          <p class="text-neutral-600 mt-1 text-sm">churn-prediction accuracy, cut churn 10%</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORK (Netflix uniform carousel) -->
-    <section id="work" class="bg-neutral-50 border-y border-black/5">
-      <div class="max-w-6xl mx-auto px-6 py-16">
-        <p class="text-sm font-bold text-netflix uppercase tracking-wider mb-3 reveal">Featured Work</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-2 reveal">Selected products</h2>
-        <p class="text-neutral-500 reveal">Across SaaS, marketplaces and commerce. Hover a card for the detail.</p>
-
-        <div class="row">
-          <article class="ncard">
-            <div class="art"><span class="tag">AGENTIC AI</span><div><h3 class="ttl">Agentic Onboarding Co-pilot</h3><p class="company">Walmart Global Tech</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">Automated verification, catalog &amp; compliance</p><p class="desc">Agentic AI co-pilot that guides sellers through onboarding &amp; activation and does the busywork - significantly reducing manual effort; -15% fraud via ML risk detection.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">GROWTH · PERSONALIZATION</span><div><h3 class="ttl">Activation &amp; Personalization Engine</h3><p class="company">Walmart Global Tech</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">+10% activation across 4 markets</p><p class="desc">Identified high-potential accounts and served tailored recommendations on assortment, pricing and promotions.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">CONVERSION · GROWTH</span><div><h3 class="ttl">Onboarding &amp; Funnel Redesign</h3><p class="company">Walmart Global Tech</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">+10% completion · $15M+ GMV</p><p class="desc">A/B-tested messaging, flow and offers across the funnel; rolled out winners to lift completion and cut drop-off.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">B2B SAAS · RETENTION</span><div><h3 class="ttl">Customer Health &amp; Churn Prediction</h3><p class="company">Whatfix</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">~85% accuracy · -10% churn</p><p class="desc">Churn-prediction product driving proactive, targeted lifecycle interventions; INR 2Cr+ annual savings via automation.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">B2B SAAS · SUBSCRIPTION</span><div><h3 class="ttl">Enterprise Admin &amp; Expansion</h3><p class="company">Whatfix</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">-40% admin time · +20% adoption</p><p class="desc">License management platform powering upsell &amp; cross-sell; grew account expansion using usage insights.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">GROWTH · WEB</span><div><h3 class="ttl">Website Funnel &amp; Pipeline</h3><p class="company">Whatfix</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">$7M pipeline · $1.5M revenue</p><p class="desc">Scaled the company website with marketing &amp; design; optimized conversion end-to-end.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">E-COMMERCE · PRICING</span><div><h3 class="ttl">Price Intelligence &amp; Analytics</h3><p class="company">IndiaMART</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">5M+ sellers · 100M+ buyers</p><p class="desc">Standardized pricing, detected anomalies, recommended competitive ranges; surfaced category price trends.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">E-COMMERCE · CATALOG</span><div><h3 class="ttl">WhatsApp Catalog Enrichment</h3><p class="company">IndiaMART</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">-80% listing time · 100K+/mo</p><p class="desc">WhatsApp-based listing flow plus an ML support bot (94% accuracy) that made catalog creation effortless.</p></div>
-          </article>
-
-          <article class="ncard">
-            <div class="art"><span class="tag">GROWTH · SEO</span><div><h3 class="ttl">Product Discovery &amp; SEO</h3><p class="company">IndiaMART</p></div><span class="redbar"></span></div>
-            <div class="impact"><p class="metric">+300% organic traffic</p><p class="desc">Optimized product discovery and SEO across a massive catalog to unlock organic demand in 15 months.</p></div>
-          </article>
-        </div>
+      <div class="reveal text-sm text-neutral-300 space-y-3">
+        <p><span class="text-neutral-500">Domains:</span> B2B SaaS, Marketplaces, E-commerce, Quick Commerce, Subscription, Fintech</p>
+        <p><span class="text-neutral-500">Focus:</span> Acquisition, Onboarding, Activation, Retention, Monetization</p>
+        <p><span class="text-neutral-500">AI:</span> GenAI (LLM workflows), Agentic AI &amp; automation, ML personalization</p>
+        <p><span class="text-neutral-500">Education:</span> MBA - IIT Kharagpur · B.E. - Y.C.C.E.</p>
+        <p><span class="text-neutral-500">Languages:</span> English, Hindi, Marathi</p>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-      <p class="text-sm font-bold text-netflix uppercase tracking-wider mb-3 reveal">Toolkit</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-10 reveal">How I work</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-neutral-50 rounded-xl p-7 border border-black/5 lift reveal">
-          <h3 class="font-bold mb-4 text-lg">Growth &amp; Product</h3>
-          <ul class="space-y-2.5 text-sm text-neutral-600">
+    <section id="skills" class="max-w-[1400px] mx-auto px-6 lg:px-12 py-8">
+      <h2 class="text-2xl font-extrabold mb-6 reveal">Skills &amp; Toolkit</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-[#1c1c1c] rounded-lg p-6 lift reveal border border-white/5">
+          <h3 class="font-bold mb-4">Growth &amp; Product</h3>
+          <ul class="space-y-2 text-sm text-neutral-400">
             <li>Acquisition, onboarding &amp; activation</li><li>Subscription growth (upgrades, expansion, cross-sell)</li>
-            <li>Personalization &amp; targeting</li><li>Promotions, offers &amp; lifecycle campaigns</li>
-            <li>Conversion funnel &amp; sign-up optimization</li><li>Retention &amp; churn reduction</li>
+            <li>Personalization &amp; targeting</li><li>Promotions, offers &amp; lifecycle</li>
+            <li>Conversion &amp; sign-up optimization</li><li>Retention &amp; churn reduction</li>
           </ul>
         </div>
-        <div class="bg-neutral-50 rounded-xl p-7 border border-black/5 lift reveal">
-          <h3 class="font-bold mb-4 text-lg">AI · Data · Experimentation</h3>
-          <ul class="space-y-2.5 text-sm text-neutral-600">
+        <div class="bg-[#1c1c1c] rounded-lg p-6 lift reveal border border-white/5">
+          <h3 class="font-bold mb-4">AI · Data · Experimentation</h3>
+          <ul class="space-y-2 text-sm text-neutral-400">
             <li>Agentic AI &amp; workflow automation</li><li>GenAI product development (LLM workflows)</li>
             <li>ML-driven risk &amp; personalization</li><li>Growth experimentation (A/B testing)</li>
             <li>Data-driven decisions · OKRs &amp; KPIs</li>
           </ul>
         </div>
-        <div class="bg-neutral-50 rounded-xl p-7 border border-black/5 lift reveal">
-          <h3 class="font-bold mb-4 text-lg">Tools &amp; Platforms</h3>
+        <div class="bg-[#1c1c1c] rounded-lg p-6 lift reveal border border-white/5">
+          <h3 class="font-bold mb-4">Tools &amp; Platforms</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Looker</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Mixpanel</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Pendo</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Productboard</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">GA</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Power BI</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Kibana</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Jira</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Confluence</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Figma</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Miro</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">Salesforce</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">NetSuite</span>
-            <span class="text-xs px-3 py-1.5 rounded-full bg-white border border-black/10">ChatGPT · Claude · Gemini</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Looker</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Mixpanel</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Pendo</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Productboard</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">GA</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Power BI</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Kibana</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Jira</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Confluence</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Figma</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Miro</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">Salesforce</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">NetSuite</span>
+            <span class="text-xs px-3 py-1.5 rounded bg-white/5 border border-white/10">ChatGPT · Claude · Gemini</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="bg-neutral-50 border-y border-black/5">
-      <div class="max-w-6xl mx-auto px-6 py-20">
-        <p class="text-sm font-bold text-netflix uppercase tracking-wider mb-3 reveal">Experience</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-10 reveal">The path so far</h2>
-        <div class="space-y-4">
-          <div class="lift bg-white rounded-xl p-6 border border-black/5 reveal flex flex-col sm:flex-row sm:items-start gap-4">
-            <p class="font-bold text-sm text-netflix sm:w-36 shrink-0">2025 - Present</p>
-            <div><h3 class="font-bold">Senior Product Manager - Walmart Global Tech</h3>
-            <p class="text-neutral-600 text-sm mt-1">Own seller acquisition &amp; activation across US, CA, MX, CL. Built a personalization engine (+10% activation), an onboarding redesign (+10% completion, $15M+ GMV), and an Agentic AI onboarding co-pilot; cut fraud 15% with ML.</p></div>
-          </div>
-          <div class="lift bg-white rounded-xl p-6 border border-black/5 reveal flex flex-col sm:flex-row sm:items-start gap-4">
-            <p class="font-bold text-sm text-netflix sm:w-36 shrink-0">2021 - 2025</p>
-            <div><h3 class="font-bold">Senior Product Manager - Whatfix (B2B SaaS)</h3>
-            <p class="text-neutral-600 text-sm mt-1">$7M pipeline &amp; $1.5M revenue via funnel optimization; churn-prediction (~85%, -10% churn); Enterprise Admin platform (-40% admin time, +20% adoption) powering upsell &amp; expansion; mentored 3 PMs.</p></div>
-          </div>
-          <div class="lift bg-white rounded-xl p-6 border border-black/5 reveal flex flex-col sm:flex-row sm:items-start gap-4">
-            <p class="font-bold text-sm text-netflix sm:w-36 shrink-0">2019 - 2021</p>
-            <div><h3 class="font-bold">Product Manager - IndiaMART (B2B E-commerce)</h3>
-            <p class="text-neutral-600 text-sm mt-1">Price Intelligence for 5M+ sellers &amp; analytics for 100M+ buyers; WhatsApp catalog enrichment (-80% listing time); +300% organic traffic in 15 months.</p></div>
-          </div>
-          <div class="lift bg-white rounded-xl p-6 border border-black/5 reveal flex flex-col sm:flex-row sm:items-start gap-4">
-            <p class="font-bold text-sm text-netflix sm:w-36 shrink-0">2015 - 2018</p>
-            <div><h3 class="font-bold">Applications Developer - BNY Mellon · PM Trainee - YES Bank</h3>
-            <p class="text-neutral-600 text-sm mt-1">Built NetX360 cloud platform (-90% open incidents); OTP auth (-25% security incidents); designed a liquidity-management portal for a corporate bank.</p></div>
-          </div>
+    <section id="experience" class="max-w-[1400px] mx-auto px-6 lg:px-12 py-10">
+      <h2 class="text-2xl font-extrabold mb-6 reveal">Experience</h2>
+      <div class="space-y-3">
+        <div class="lift bg-[#1c1c1c] rounded-lg p-6 reveal flex flex-col sm:flex-row sm:items-start gap-4 border border-white/5">
+          <p class="font-bold text-sm text-[color:var(--red)] sm:w-36 shrink-0">2025 - Present</p>
+          <div><h3 class="font-bold">Senior Product Manager - Walmart Global Tech</h3>
+          <p class="text-neutral-400 text-sm mt-1">Own seller acquisition &amp; activation across US, CA, MX, CL. Built a personalization engine (+10% activation), onboarding redesign (+10% completion, $15M+ GMV), and an Agentic AI onboarding co-pilot; cut fraud 15% with ML.</p></div>
         </div>
-        <div class="mt-6 flex flex-wrap gap-4">
-          <div class="bg-white rounded-xl px-6 py-4 border border-black/5 reveal"><p class="font-bold">MBA</p><p class="text-neutral-500 text-sm">IIT Kharagpur · 2017-19</p></div>
-          <div class="bg-white rounded-xl px-6 py-4 border border-black/5 reveal"><p class="font-bold">B.E.</p><p class="text-neutral-500 text-sm">Y.C.C.E. · 2011-15</p></div>
+        <div class="lift bg-[#1c1c1c] rounded-lg p-6 reveal flex flex-col sm:flex-row sm:items-start gap-4 border border-white/5">
+          <p class="font-bold text-sm text-[color:var(--red)] sm:w-36 shrink-0">2021 - 2025</p>
+          <div><h3 class="font-bold">Senior Product Manager - Whatfix (B2B SaaS)</h3>
+          <p class="text-neutral-400 text-sm mt-1">$7M pipeline &amp; $1.5M revenue via funnel optimization; churn-prediction (~85%, -10% churn); Enterprise Admin platform (-40% admin time, +20% adoption) powering upsell &amp; expansion; mentored 3 PMs.</p></div>
+        </div>
+        <div class="lift bg-[#1c1c1c] rounded-lg p-6 reveal flex flex-col sm:flex-row sm:items-start gap-4 border border-white/5">
+          <p class="font-bold text-sm text-[color:var(--red)] sm:w-36 shrink-0">2019 - 2021</p>
+          <div><h3 class="font-bold">Product Manager - IndiaMART (B2B E-commerce)</h3>
+          <p class="text-neutral-400 text-sm mt-1">Price Intelligence for 5M+ sellers &amp; analytics for 100M+ buyers; WhatsApp catalog enrichment (-80% listing time); +300% organic traffic in 15 months.</p></div>
+        </div>
+        <div class="lift bg-[#1c1c1c] rounded-lg p-6 reveal flex flex-col sm:flex-row sm:items-start gap-4 border border-white/5">
+          <p class="font-bold text-sm text-[color:var(--red)] sm:w-36 shrink-0">2015 - 2018</p>
+          <div><h3 class="font-bold">Applications Developer - BNY Mellon · PM Trainee - YES Bank</h3>
+          <p class="text-neutral-400 text-sm mt-1">Built NetX360 cloud platform (-90% open incidents); OTP auth (-25% security incidents); designed a liquidity-management portal for a corporate bank.</p></div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="bg-ink text-white">
-      <div class="max-w-6xl mx-auto px-6 py-24 text-center">
-        <h2 class="text-4xl sm:text-6xl font-black tracking-tight">Let's build something <span class="text-netflix">great</span>.</h2>
-        <p class="mt-5 text-neutral-400 max-w-xl mx-auto text-lg">Open to senior product roles across SaaS, marketplaces, commerce and AI-powered products.</p>
-        <div class="mt-9 flex flex-wrap justify-center gap-3">
-          <a href="mailto:gauravborikar4420@gmail.com" class="px-7 py-3.5 rounded font-semibold bg-netflix text-white hover:bg-netdark transition">Email me</a>
-          <a href="https://www.linkedin.com/in/gaurav-borikar-5018a7a8" target="_blank" rel="noopener" class="px-7 py-3.5 rounded font-semibold border-2 border-white/25 hover:border-white/60 transition">LinkedIn</a>
-          <a href="Gaurav-Borikar-Resume.pdf" target="_blank" rel="noopener" class="px-7 py-3.5 rounded font-semibold border-2 border-white/25 hover:border-white/60 transition">Resume</a>
-        </div>
-        <p class="mt-7 text-sm text-neutral-500">English · Hindi · Marathi</p>
+    <section id="contact" class="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 text-center border-t border-white/10">
+      <h2 class="bebas text-5xl sm:text-7xl">LET'S BUILD SOMETHING GREAT</h2>
+      <p class="mt-4 text-neutral-400 max-w-xl mx-auto">Open to senior product roles across SaaS, marketplaces, commerce and AI-powered products.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="mailto:gauravborikar4420@gmail.com" class="bg-white text-black font-bold px-7 py-3 rounded hover:bg-white/85 transition">Email me</a>
+        <a href="https://www.linkedin.com/in/gaurav-borikar-5018a7a8" target="_blank" rel="noopener" class="bg-[rgba(109,109,110,.65)] font-semibold px-7 py-3 rounded hover:bg-[rgba(109,109,110,.5)] transition">LinkedIn</a>
+        <a href="Gaurav-Borikar-Resume.pdf" target="_blank" rel="noopener" class="bg-[rgba(109,109,110,.65)] font-semibold px-7 py-3 rounded hover:bg-[rgba(109,109,110,.5)] transition">Resume</a>
       </div>
     </section>
   </main>
 
-  <footer class="max-w-6xl mx-auto px-6 py-8 text-sm text-neutral-400 flex flex-col sm:flex-row justify-between gap-2">
+  <footer class="max-w-[1400px] mx-auto px-6 lg:px-12 py-8 text-sm text-neutral-500 flex flex-col sm:flex-row justify-between gap-2">
     <span>&copy; <span id="year"></span> Gaurav Borikar</span>
-    <span>Designed &amp; built with intent.</span>
+    <span>gauravborikar4420@gmail.com</span>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // nav solid on scroll
     const nav = document.getElementById('nav');
-    addEventListener('scroll', ()=>{ nav.classList.toggle('shadow-md', scrollY>10); });
+    addEventListener('scroll', ()=>{ nav.classList.toggle('solid', scrollY>60); });
+    // row arrows
+    document.querySelectorAll('.arrowbtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ const row=btn.parentElement.querySelector('.row'); row.scrollBy({ left: btn.dataset.dir*row.clientWidth*0.8, behavior:'smooth' }); });
+    });
+    // reveal
     const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{ threshold:.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    const easeOut = t => 1 - Math.pow(1-t,3);
-    function count(el){ const t=parseFloat(el.dataset.count), pre=el.dataset.prefix||'', suf=el.dataset.suffix||''; let s; const d=1300;
-      function step(ts){ if(!s)s=ts; const p=Math.min((ts-s)/d,1); el.textContent=pre+Math.round(easeOut(p)*t)+suf; if(p<1)requestAnimationFrame(step);} requestAnimationFrame(step); }
-    const cio = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ count(e.target); cio.unobserve(e.target);} }); },{ threshold:.6 });
-    document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   </script>
 </body>
 </html>
